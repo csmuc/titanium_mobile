@@ -17,6 +17,7 @@
 }
 -(void)setPageToken:(NSString*)pageToken;
 
+-(id) countSubviewsInWebview:(id)args;
 @end
 
 
