@@ -496,7 +496,7 @@ class Compiler(object):
 			if not os.path.exists(theme_path):
 				print '[ERROR] Unable to locate theme "%s"' % theme
 			else:
-				for dirname, dirnames, filenames in os.walk(theme_path):
+				for dirname, dirnames, filenames in os.walk(theme_path, True, None, True):
 					for filename in filenames:
 						fname, ext = os.path.splitext(filename.lower())
 						if ext == '.css':
