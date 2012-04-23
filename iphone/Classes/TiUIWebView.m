@@ -99,6 +99,25 @@ static NSString * const kTitaniumJavascript = @"Ti.App={};Ti.API={};Ti.App._list
 }
 
 
+- (NSInteger) doCountSubviews:(UIView *)view {
+    NSInteger count = 0;
+    if (view.subviews && [view.subviews count] > 0) {
+        for (UIView *subview in view.subviews) {
+            count += 1;
+            count += [self doCountSubviews:subview];
+        }
+    }
+    
+    return count;
+}
+
+-(void)countSubviews:(NSMutableArray*)arg {
+    NSInteger count = [self doCountSubviews:webview];
+    NSString *s = [NSString stringWithFormat:@"%d", count];
+	[arg addObject:s];
+}
+
+
 -(UIWebView*)webview 
 {
 	if (webview==nil)

@@ -85,6 +85,19 @@ USE_VIEW_FOR_CONTENT_WIDTH
 	return html;
 }
 
+
+-(id) countSubviewsInWebview:(id)args {
+	if ([self viewAttached])
+	{
+		NSMutableArray *result = [NSMutableArray array];
+		[[self view] performSelectorOnMainThread:@selector(countSubviews:) withObject:result waitUntilDone:YES];
+		return [result objectAtIndex:0];
+	}
+    
+	return @"";
+}
+
+
 -(void)goBack:(id)args
 {
 	TiThreadPerformOnMainThread(^{[(TiUIWebView*)[self view] goBack];}, NO);
