@@ -566,7 +566,7 @@ class Compiler(object):
 		def add_compiled_resources(source,target):
 			print "[DEBUG] copy resources from %s to %s" % (source,target)
 			compiled_targets = {}
-			for root, dirs, files in os.walk(source):
+			for root, dirs, files in os.walk(source, True, None, True):
 				for name in ignoreDirs:
 					if name in dirs:
 						dirs.remove(name)	# don't visit ignored directories			  
